@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Upload, FileVideo, X } from 'lucide-react'
 
@@ -6,6 +6,22 @@ export default function UploadZone({ onFileSelect, disabled }) {
   const [dragOver, setDragOver] = useState(false)
   const [selectedFile, setSelectedFile] = useState(null)
   const inputRef = useRef(null)
+
+  // Stable blob URL — only re-created when the file actually changes.
+  // Without this, URL.createObjectURL() runs every render (60x/sec during
+  // timer ticks) giving the <video> a new src each time and making it reload.
+  const videoSrc = useMemo(() => {
+    if (!selectedFile) return null
+    const url = URL.createObjectURL(selectedFile)
+    return url
+  }, [selectedFile])
+
+  // Revoke old object URL when file changes or component unmounts (memory cleanup)
+  useEffect(() => {
+    return () => {
+      if (videoSrc) URL.revokeObjectURL(videoSrc)
+    }
+  }, [videoSrc])
 
   const validTypes = ['video/mp4', 'video/avi', 'video/quicktime', 'video/x-msvideo', 'video/x-matroska']
 
@@ -114,7 +130,7 @@ export default function UploadZone({ onFileSelect, disabled }) {
           {/* Video Preview */}
           <div className="mt-6 rounded-xl overflow-hidden bg-black/5 dark:bg-black/40 border border-slate-200 dark:border-slate-700">
             <video 
-              src={URL.createObjectURL(selectedFile)} 
+              src={videoSrc} 
               controls 
               className="w-full max-h-64 object-contain"
             />

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Shield } from 'lucide-react'
 import UploadZone from '../components/UploadZone'
@@ -17,20 +17,18 @@ export default function Detect() {
   const [logs, setLogs] = useState([])
   const [results, setResults] = useState(null)
   const [elapsedTime, setElapsedTime] = useState(0)
-  const [startTime, setStartTime] = useState(null)
+  const startTimeRef = useRef(null)
 
-  // Timer Effect (Precision Clock Sync)
+  // Stable 1-second interval timer — no jitter, no frame-rate dependency
   useEffect(() => {
-    let animationFrame;
-    if (analyzing && startTime) {
-      const updateTimer = () => {
-        setElapsedTime(Math.floor((Date.now() - startTime) / 1000));
-        animationFrame = requestAnimationFrame(updateTimer);
-      };
-      animationFrame = requestAnimationFrame(updateTimer);
-    }
-    return () => cancelAnimationFrame(animationFrame);
-  }, [analyzing, startTime]);
+    if (!analyzing) return
+    startTimeRef.current = Date.now()
+    setElapsedTime(0)
+    const interval = setInterval(() => {
+      setElapsedTime(Math.floor((Date.now() - startTimeRef.current) / 1000))
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [analyzing])
 
   const addLog = useCallback((log) => {
     setLogs(prev => [...prev, log])
@@ -43,7 +41,6 @@ export default function Detect() {
     setLogs([])
     setResults(null)
     setElapsedTime(0)
-    setStartTime(Date.now())
 
     const demoLogs = dummyResults.logs
     const stageTimings = [
@@ -88,7 +85,6 @@ export default function Detect() {
     setLogs([])
     setResults(null)
     setElapsedTime(0)
-    setStartTime(Date.now())
 
     try {
       const formData = new FormData()
@@ -156,7 +152,7 @@ export default function Detect() {
     setLogs([])
     setResults(null)
     setElapsedTime(0)
-    setStartTime(null)
+    startTimeRef.current = null
   }
 
   return (
@@ -186,20 +182,33 @@ export default function Detect() {
           <div className="space-y-6 mb-8">
             <UploadZone onFileSelect={setFile} disabled={analyzing} />
             
-            {/* Analyze Button */}
-            {(file || DEMO_MODE) && !analyzing && (
+            {/* Analyze Button — shown before AND during analysis */}
+            {(file || DEMO_MODE) && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center"
               >
                 <button
-                  onClick={handleAnalyze}
-                  className="btn-glow inline-flex items-center gap-2"
+                  onClick={!analyzing ? handleAnalyze : undefined}
+                  disabled={analyzing}
+                  className={`btn-glow inline-flex items-center gap-3 transition-all ${
+                    analyzing ? 'opacity-80 cursor-not-allowed' : ''
+                  }`}
                 >
-                  {DEMO_MODE ? '🎮 Run Demo Analysis' : '🔍 Start Analysis'}
+                  {analyzing ? (
+                    <>
+                      <span className="w-4 h-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+                      <span className="tabular-nums">
+                        Analyzing...&nbsp;
+                        {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
+                      </span>
+                    </>
+                  ) : (
+                    DEMO_MODE ? '🎮 Run Demo Analysis' : '🔍 Run Video Analysis'
+                  )}
                 </button>
-                {DEMO_MODE && (
+                {DEMO_MODE && !analyzing && (
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                     Demo mode — uses simulated data. Connect backend for real analysis.
                   </p>
@@ -218,14 +227,6 @@ export default function Detect() {
           >
             <div className="flex justify-between items-center mb-2 px-2">
                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Analysis Progress / Real-Time Logs</h3>
-               <div className="flex items-center gap-2">
-                 <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
-                   <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
-                   <div className="w-[48px] text-center tabular-nums text-sm font-mono font-medium text-slate-700 dark:text-slate-300">
-                     {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
-                   </div>
-                 </div>
-               </div>
             </div>
             <ProgressBar currentStage={currentStage} />
             <ProgressTerminal logs={logs} />
