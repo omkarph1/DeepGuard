@@ -104,6 +104,3 @@ npm run dev
 - Head to the **Detect** page, upload an MP4, AVI, or MOV video file format, and watch the real-time SSE stream evaluate the synthetic fidelity of the video. 
 
 ---
-
-## ⚠️ Research Disclaimer
-DeepGuard v2 is an advanced educational and analytical tool. The models (`ConvNeXt`, `Xception`, `BiLSTM`) are highly accurate on curated evaluation datasets (FaceForensics++, Celeb-DF), but no AI system is infallible. DeepGuard's predictions should be treated as forensic indications rather than absolute legal truths.
