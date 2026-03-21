@@ -74,7 +74,7 @@ export default function Landing() {
                 </span>
               </h1>
               <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 max-w-xl leading-relaxed">
-                Upload any video and our 3-model ensemble — trained on 343K+ balanced images from 17 curated sources — will tell you if it's been manipulated.
+                Upload any video and our 3-model ensemble — trained on 343K+ balanced images from 17 curated types — will tell you if it's been manipulated.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/detect" className="btn-glow inline-flex items-center justify-center gap-2">
@@ -150,7 +150,7 @@ export default function Landing() {
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white mb-4"
           >
-            Trained on <span className="gradient-text">17 Curated Sources</span>
+            Trained on <span className="gradient-text">17 Curated Types</span>
           </motion.h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
             343K+ balanced images covering deepfake videos, GAN generators, and diffusion models.

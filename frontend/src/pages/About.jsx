@@ -63,7 +63,7 @@ export default function About() {
           </h1>
           <p className="text-lg text-slate-800 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
             DeepGuard v2 is an AI-powered deepfake detection system designed to combat the growing threat of synthetic media.
-            Using a 3-model ensemble trained on 343,000+ balanced images from 17 curated sources.
+            Using a 3-model ensemble trained on 343,000+ balanced images from 17 curated types.
           </p>
         </motion.div>
       </section>
@@ -215,9 +215,9 @@ export default function About() {
           <div className="glass-card p-6 sm:p-8 relative overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
               {[
-                { step: '1', title: 'Data Aggregation (17 Sources)', desc: 'Sourced hundreds of gigabytes of videos and images from 17 distinct, curated sources including FaceForensics++, Celeb-DF, and leading StyleGAN generators to ensure robust geographic and demographic diversity.' },
+                { step: '1', title: 'Data Aggregation (17 Types)', desc: 'Sourced hundreds of gigabytes of videos and images from 17 distinct, curated types including FaceForensics++, Celeb-DF, and leading StyleGAN generators to ensure robust geographic and demographic diversity.' },
                 { step: '2', title: 'MTCNN Face Extraction', desc: 'Used the MTCNN (Multi-task Cascaded Convolutional Network) architecture to accurately detect, crop, and align faces across all frames, perfectly standardized to remove arbitrary background noise.' },
-                { step: '3', title: 'Absolute 50/50 Balancing', desc: 'Strictly downsampled the dominant classes across all 17 datasets to achieve exactly a 50/50 split (171,719 REAL, 171,719 FAKE), preventing the model from ever developing a structural class bias.' }
+                { step: '3', title: 'Absolute 50/50 Balancing', desc: 'Strictly downsampled the dominant classes across all 17 types to achieve exactly a 50/50 split (171,719 REAL, 171,719 FAKE), preventing the model from ever developing a structural class bias.' }
               ].map((s, i) => (
                 <div key={s.step} className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/30 transition-colors shadow-sm">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary font-black text-xl mb-4">
@@ -246,7 +246,7 @@ export default function About() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               {[
                 { value: '343K+', label: 'Total Images', sub: 'Perfectly balanced Real/Fake' },
-                { value: '17', label: 'Data Sources', sub: 'Videos, GANs & diffusion models' },
+                { value: '17', label: 'Data Types', sub: 'Videos, GANs & diffusion models' },
                 { value: '50/50', label: 'Class Balance', sub: '171,719 real + 171,719 fake' },
               ].map((stat, i) => (
                 <div key={stat.label} className="text-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/30">
