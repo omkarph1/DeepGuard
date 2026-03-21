@@ -27,9 +27,10 @@ const datasetSources = [
 const barColors = ['#00D4E8', '#0891B2', '#7B61FF', '#6D5ACF', '#34D399', '#059669', '#F59E0B', '#EF4444', '#94A3B8']
 
 const modelPerformance = [
-  { name: 'ConvNeXt V2 v2', accuracy: '96.01%', auc: '0.989', tta: '96.01%', params: '28.6M' },
-  { name: 'XceptionNet v3', accuracy: '92.35%', auc: '0.971', tta: '92.35%', params: '22.9M' },
-  { name: 'ResNeXt50-BiLSTM v2', accuracy: '94.00%', auc: '0.978', tta: '94.00%', params: '25.6M' },
+  { name: 'ConvNeXt V2 v3', params: '88.22M', inputSize: '224×224', fileSize: '353 MB' },
+  { name: 'XceptionNet v3', params: '21.86M', inputSize: '299×299', fileSize: '87.8 MB' },
+  { name: 'ResNeXt50+BiLSTM v2', params: '49.22M', inputSize: '224×224', fileSize: '197 MB' },
+  { name: 'Ensemble Total', params: '159.3M', inputSize: '—', fileSize: '638 MB', isTotal: true },
 ]
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -298,7 +299,7 @@ export default function About() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-700">
-                    {['Model', 'Accuracy', 'AUC', 'TTA Accuracy', 'Parameters'].map(header => (
+                    {['Model', 'Total Params', 'Input Size', 'File Size'].map(header => (
                       <th key={header} className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                         {header}
                       </th>
@@ -307,12 +308,11 @@ export default function About() {
                 </thead>
                 <tbody>
                   {modelPerformance.map((model, i) => (
-                    <tr key={model.name} className="border-b border-slate-100 dark:border-slate-800 last:border-0">
-                      <td className="px-6 py-4 text-sm font-semibold text-slate-800 dark:text-white">{model.name}</td>
-                      <td className="px-6 py-4 text-sm font-mono text-primary-light dark:text-primary">{model.accuracy}</td>
-                      <td className="px-6 py-4 text-sm font-mono text-slate-600 dark:text-slate-300">{model.auc}</td>
-                      <td className="px-6 py-4 text-sm font-mono text-emerald-600 dark:text-emerald-400">{model.tta}</td>
-                      <td className="px-6 py-4 text-sm font-mono text-slate-600 dark:text-slate-300">{model.params}</td>
+                    <tr key={model.name} className={`border-b border-slate-100 dark:border-slate-800 last:border-0 ${model.isTotal ? 'bg-slate-50 dark:bg-slate-800/50' : ''}`}>
+                      <td className={`px-6 py-4 text-sm font-semibold ${model.isTotal ? 'text-slate-900 dark:text-white font-bold' : 'text-slate-800 dark:text-white'}`}>{model.name}</td>
+                      <td className="px-6 py-4 text-sm font-mono text-primary-light dark:text-primary font-bold">{model.params}</td>
+                      <td className="px-6 py-4 text-sm font-mono text-slate-600 dark:text-slate-300">{model.inputSize}</td>
+                      <td className="px-6 py-4 text-sm font-mono text-slate-600 dark:text-slate-300">{model.fileSize}</td>
                     </tr>
                   ))}
                 </tbody>
