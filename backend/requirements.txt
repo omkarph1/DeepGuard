@@ -1,11 +1,9 @@
 flask
 flask-cors
 numpy
-torch
-torchvision
 timm
 facenet-pytorch
-opencv-python
+opencv-python-headless
 Pillow
 huggingface_hub
 gunicorn

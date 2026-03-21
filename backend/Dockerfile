@@ -7,17 +7,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=main.py
 
-# Install system dependencies (needed for OpenCV and ML libraries)
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
-
 # Set working directory
 WORKDIR /app
 
 # Install Python dependencies
 COPY requirements.txt .
+# Install PyTorch CPU directly to save space and avoid HF Free Space build timeout/oom
+RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy local code to the container image.
@@ -25,10 +21,11 @@ COPY . .
 
 # Change ownership of /app to an unprivileged user to run safely in HF Spaces
 RUN useradd -m -u 1000 user
-USER user
 
-# Create uploads directory with correct permissions
-RUN mkdir -p /app/uploads && chown -R user:user /app/uploads
+# Create uploads directory and give user ownership of the app folder
+RUN mkdir -p /app/uploads && chown -R user:user /app
+
+USER user
 
 # Expose the port that HF Spaces expects (7860 by default)
 EXPOSE 7860

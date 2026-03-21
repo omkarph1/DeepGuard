@@ -34,6 +34,13 @@ def sse_event(data, event=None):
     msg += f"data: {json.dumps(data)}\n\n"
     return msg
 
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({
+        "message": "🛡️ DeepGuard v2 API is running successfully!",
+        "endpoints": ["/api/health", "/api/detect"]
+    })
+
 @app.route("/api/health", methods=["GET"])
 def health():
     """Health check endpoint."""

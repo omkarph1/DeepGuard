@@ -116,60 +116,29 @@ deepguardv2/
 │   │   └── index.css        # Global design system
 │   ├── package.json
 │   └── vite.config.js
-├── weights/                 # ⚠️ NOT in Git — store .pth files here locally
-│   ├── convnextv2_model.pth
-│   ├── xception_model.pth
-│   └── resnext_lstm_model.pth
 └── README.md
 ```
 
-> ⚠️ **The `weights/` folder is excluded from GitHub** (files exceed 100MB). You must download and place the `.pth` model files manually before running locally.
+> ☁️ **Cloud Architecture Note**: Weight files are no longer stored locally. The backend downloads the `.pth` ensemble directly from a private Hugging Face Model Space at runtime via `huggingface_hub`.
 
 ---
 
-## 🚀 Local Setup Guide
+## 🚀 Deployment Architecture
 
-You need **Python 3.10+** and **Node.js 18+** installed.
+DeepGuard v2 is fully cloud-native, split between Vercel (Frontend) and Hugging Face Spaces (Backend).
 
-### Step 1 — Clone the Repository
-```bash
-git clone https://github.com/omkarph1/DeepGuard.git
-cd DeepGuard
-```
+### 1. Backend API (Hugging Face Spaces)
+The Flask backend runs in a lightweight Docker container on Hugging Face Spaces. 
+- It dynamically pulls the ensemble weights from a private Hugging Face weights repository using a secure `HF_TOKEN`.
+- It uses a CPU-only PyTorch wheel and `opencv-python-headless` for highly optimized, low-memory inference on Free Tier HF Spaces.
+- Served via `gunicorn` on port `7860`.
 
-### Step 2 — Backend Setup (Flask API)
-```bash
-cd backend
+### 2. Frontend (Vercel)
+The React/Vite dashboard is deployed on Vercel.
+- Communicates with the backend API via environment variable `VITE_API_URL`.
+- Client-side routing is handled securely with a standard `vercel.json` config.
 
-# Create a virtual environment
-python -m venv venv
-
-# Activate it
-# Windows:
-venv\Scripts\activate
-# macOS / Linux:
-source venv/bin/activate
-
-# Install all ML dependencies
-pip install -r requirements.txt
-
-# Place your .pth weight files inside ../weights/ then start the server
-python main.py
-# ✅ API running on http://localhost:8000
-```
-
-### Step 3 — Frontend Setup (React)
-Open a **new terminal window**:
-```bash
-cd frontend
-
-# Install packages
-npm install
-
-# Start the dev server
-npm run dev
-# ✅ UI running on http://localhost:5173
-```
+*(To run locally, you can still clone the repo, `npm install` the frontend, `pip install -r requirements.txt` the backend, and set your `HF_TOKEN` in a `.env` file!)*
 
 ### Step 4 — Usage
 1. Open `http://localhost:5173` in your browser
