@@ -16,12 +16,21 @@ from models.convnext_model import ConvNeXtV2Deepfake
 from models.xception_model import XceptionDeepfake
 from models.resnext_bilstm_model import ResNeXtBiLSTM
 
-WEIGHTS_DIR = os.path.join(os.path.dirname(__file__), "..", "weights")
+from huggingface_hub import hf_hub_download
+
+WEIGHTS_REPO = "Omkarpp/deepguard-v2-weights"
+
+def get_weight_path(filename):
+    return hf_hub_download(
+        repo_id=WEIGHTS_REPO, 
+        filename=filename, 
+        token=os.environ.get("HF_TOKEN")
+    )
 
 WEIGHT_FILES = {
-    "convnext_v2": os.path.join(WEIGHTS_DIR, "best_convnextv2_v2.pth"),
-    "xception_v3": os.path.join(WEIGHTS_DIR, "best_xception_v3.pth"),
-    "resnext_bilstm_v2": os.path.join(WEIGHTS_DIR, "best_resnext_bilstm_v2.pth"),
+    "convnext_v2": "best_convnextv2_v2.pth",
+    "xception_v3": "best_xception_v3.pth",
+    "resnext_bilstm_v2": "best_resnext_bilstm_v2.pth",
 }
 
 def load_models(device):
@@ -32,10 +41,11 @@ def load_models(device):
     models = {}
     
     # ConvNeXt V2
-    if os.path.exists(WEIGHT_FILES["convnext_v2"]):
+    if True: # We will fetch dynamically
         print("  Loading ConvNeXt V2...")
         model = ConvNeXtV2Deepfake(num_classes=2)
-        model.load_state_dict(torch.load(WEIGHT_FILES["convnext_v2"], map_location=device, weights_only=True))
+        model_path = get_weight_path(WEIGHT_FILES["convnext_v2"])
+        model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
         model.to(device)
         model.eval()
         models["convnext_v2"] = model
@@ -44,10 +54,11 @@ def load_models(device):
         models["convnext_v2"] = None
 
     # XceptionNet V3
-    if os.path.exists(WEIGHT_FILES["xception_v3"]):
+    if True:
         print("  Loading XceptionNet V3...")
         model = XceptionDeepfake(num_classes=2)
-        model.load_state_dict(torch.load(WEIGHT_FILES["xception_v3"], map_location=device, weights_only=True))
+        model_path = get_weight_path(WEIGHT_FILES["xception_v3"])
+        model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
         model.to(device)
         model.eval()
         models["xception_v3"] = model
@@ -56,10 +67,11 @@ def load_models(device):
         models["xception_v3"] = None
 
     # ResNeXt50-BiLSTM
-    if os.path.exists(WEIGHT_FILES["resnext_bilstm_v2"]):
+    if True:
         print("  Loading ResNeXt50-BiLSTM...")
         model = ResNeXtBiLSTM(num_classes=2)
-        model.load_state_dict(torch.load(WEIGHT_FILES["resnext_bilstm_v2"], map_location=device, weights_only=True))
+        model_path = get_weight_path(WEIGHT_FILES["resnext_bilstm_v2"])
+        model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
         model.to(device)
         model.eval()
         models["resnext_bilstm_v2"] = model

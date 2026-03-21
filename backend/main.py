@@ -11,7 +11,7 @@ from flask_cors import CORS
 from inference import load_models, extract_faces, run_inference, ensemble_vote
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173", "http://localhost:3000"])
+CORS(app, origins=["*"])
 
 UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -172,4 +172,4 @@ def detect():
     )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    app.run(host="0.0.0.0", port=7860, debug=False)

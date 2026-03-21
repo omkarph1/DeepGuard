@@ -8,7 +8,7 @@ import ResultsPanel from '../components/ResultsPanel'
 import { dummyResults } from '../data/dummyResults'
 
 const DEMO_MODE = false // Set to false when backend is connected
-const API_URL = 'http://localhost:8000'
+const API_URL = import.meta.env.VITE_API_URL || 'https://omkarpp-deepguard-backend.hf.space';
 
 export default function Detect() {
   const [file, setFile] = useState(null)
