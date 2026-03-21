@@ -8,6 +8,8 @@
 [![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=flat-square&logo=flask)](https://flask.palletsprojects.com)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?style=flat-square&logo=pytorch)](https://pytorch.org)
 
+**[🚀 Try the Live Demo Here](https://deep-guard-psi.vercel.app/)**
+
 **DeepGuard v2** is a full-stack, AI-powered forensic web application that detects synthetic face manipulation — deepfakes — inside uploaded video files. It orchestrates a tri-model deep learning ensemble inside a real-time Flask backend, connected to a 3D-animated React dashboard via live Server-Sent Events (SSE).
 
 </div>
@@ -141,7 +143,7 @@ The React/Vite dashboard is deployed on Vercel.
 *(To run locally, you can still clone the repo, `npm install` the frontend, `pip install -r requirements.txt` the backend, and set your `HF_TOKEN` in a `.env` file!)*
 
 ### Step 4 — Usage
-1. Open `http://localhost:5173` in your browser
+1. Open website in your browser
 2. Go to the **Detect** page
 3. Upload an `.mp4`, `.avi`, `.mov`, or `.mkv` video file
 4. Click **Run Video Analysis**
