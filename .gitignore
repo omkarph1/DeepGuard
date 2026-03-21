@@ -1,0 +1,29 @@
+# Node
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Python
+__pycache__/
+venv/
+env/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Deep Learning Models & Weights
+# GitHub rejects files over 100MB unless LFS is used, these should not be tracked directly.
+weights/
+*.pth
+*.pt
+*.h5
+*.onnx
+
+# OS generated files
+.DS_Store
+Thumbs.db

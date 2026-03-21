@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  body {
+    @apply font-sans antialiased transition-colors duration-300;
+  }
+
+  /* Dark mode defaults */
+  .dark body,
+  .dark {
+    @apply bg-bg-dark text-gray-100;
+  }
+
+  /* Light mode */
+  body {
+    @apply bg-bg-light text-slate-700;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply backdrop-blur-xl border rounded-2xl transition-all duration-300;
+  }
+  .dark .glass-card {
+    @apply bg-surface-dark/80 border-slate-700/50;
+  }
+  .glass-card {
+    @apply bg-white/80 border-slate-200;
+  }
+
+  /* Glow button */
+  .btn-glow {
+    @apply relative px-8 py-4 rounded-xl font-semibold text-white 
+           bg-gradient-to-r from-primary to-accent 
+           hover:shadow-lg hover:shadow-primary/30 
+           transition-all duration-300 transform hover:scale-105;
+  }
+
+  /* Section wrapper */
+  .section-wrapper {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  /* Scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-primary/30;
+}
