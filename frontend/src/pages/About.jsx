@@ -27,9 +27,9 @@ const datasetSources = [
 const barColors = ['#00D4E8', '#0891B2', '#7B61FF', '#6D5ACF', '#34D399', '#059669', '#F59E0B', '#EF4444', '#94A3B8']
 
 const modelPerformance = [
-  { name: 'ConvNeXt V2 v3', accuracy: '94.73%', auc: '0.989', tta: '94.73%', params: '88.22M' },
-  { name: 'XceptionNet v3', accuracy: '91.26%', auc: '0.971', tta: '91.26%', params: '21.86M' },
-  { name: 'ResNeXt50-BiLSTM v2', accuracy: '94.19%', auc: '0.978', tta: '94.19%', params: '49.22M' },
+  { name: 'ConvNeXt V2 v3', accuracy: '94.73%', auc: '0.989', tta: '96.01%', params: '88.22M' },
+  { name: 'XceptionNet v3', accuracy: '91.26%', auc: '0.971', tta: '92.35%', params: '21.86M' },
+  { name: 'ResNeXt50-BiLSTM v2', accuracy: '94.19%', auc: '0.978', tta: '94.00%', params: '49.22M' },
 ]
 
 const CustomTooltip = ({ active, payload, label }) => {
