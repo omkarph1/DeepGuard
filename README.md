@@ -7,7 +7,6 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://react.dev)
 [![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=flat-square&logo=flask)](https://flask.palletsprojects.com)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?style=flat-square&logo=pytorch)](https://pytorch.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 **DeepGuard v2** is a full-stack, AI-powered forensic web application that detects synthetic face manipulation — deepfakes — inside uploaded video files. It orchestrates a tri-model deep learning ensemble inside a real-time Flask backend, connected to a 3D-animated React dashboard via live Server-Sent Events (SSE).
 
