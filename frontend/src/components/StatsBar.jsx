@@ -21,7 +21,7 @@ function Counter({ end, suffix = '', prefix = '', duration = 2 }) {
       if (countRef.current) {
         if (end >= 1000) {
           countRef.current.textContent = `${prefix}${Math.floor(current).toLocaleString()}${suffix}`
-        } else if (end < 10) {
+        } else if (Number.isInteger(end)) {
           countRef.current.textContent = `${prefix}${Math.floor(current)}${suffix}`
         } else {
           countRef.current.textContent = `${prefix}${current.toFixed(2)}${suffix}`
@@ -46,8 +46,8 @@ function Counter({ end, suffix = '', prefix = '', duration = 2 }) {
 const stats = [
   { value: 96.01, suffix: '%', label: 'Accuracy', prefix: '' },
   { value: 288184, suffix: '+', label: 'Training Images', prefix: '' },
-  { value: 3, suffix: '', label: 'AI Models', prefix: '' },
-  { value: 17, suffix: '', label: 'Data Sources', prefix: '' },
+  { value: 17, suffix: '', label: 'Manipulation Types', prefix: '' },
+  { value: 10, suffix: '+', label: 'Data Sources', prefix: '' },
 ]
 
 export default function StatsBar() {

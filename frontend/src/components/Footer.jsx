@@ -16,7 +16,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-              AI-powered deepfake detection using a 3-model ensemble trained on 343K+ images from 17 curated types.
+              AI-powered deepfake detection using a 3-model ensemble trained on 288K+ images from 17 curated types.
             </p>
           </div>
 
