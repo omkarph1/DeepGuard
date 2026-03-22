@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Database } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import HeroScene from '../components/HeroScene'
 import StatsBar from '../components/StatsBar'
 import FeatureCard from '../components/FeatureCard'
@@ -24,11 +24,7 @@ const features = [
   },
 ]
 
-const datasets = [
-  'FaceForensics++', 'Celeb-DF v2', 'DFDC', '140K Real Faces',
-  'StyleGAN', 'StyleGAN2', 'PGGAN', 'StarGAN', 'AttGAN',
-  'BEGAN', 'CramerGAN', 'MMDGAN', 'Artifact GAN',
-]
+
 
 export default function Landing() {
   return (
@@ -139,39 +135,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Trust / Dataset Section */}
-      <section className="section-wrapper">
-        <div className="text-center mb-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white mb-4"
-          >
-            Trained on <span className="gradient-text">17 Manipulation Types</span>
-          </motion.h2>
-          <p className="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
-            288K+ balanced images covering deepfake videos, GAN generators, and diffusion models.
-          </p>
-        </div>
-        <div className="flex flex-wrap justify-center gap-3">
-          {datasets.map((ds, i) => (
-            <motion.span
-              key={ds}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
-                        bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300
-                        border border-slate-200 dark:border-slate-700"
-            >
-              <Database className="w-3 h-3 text-primary-light dark:text-primary" />
-              {ds}
-            </motion.span>
-          ))}
-        </div>
-      </section>
+
 
       {/* CTA Banner */}
       <section className="py-20">
