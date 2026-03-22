@@ -58,7 +58,7 @@ export default function About() {
             DeepGuard <span className="gradient-text">v2</span>
           </h1>
           <p className="text-lg text-slate-800 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
-            Using a 3-model ensemble trained on 288,000+ balanced images from 17 curated manipulation types.
+            Using a 3-model ensemble trained on 288,000+ balanced images from 17 manipulation types.
           </p>
         </motion.div>
       </section>
