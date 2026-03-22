@@ -25,11 +25,9 @@ const features = [
 ]
 
 const datasets = [
-  'FF++ C23', 'CelebDF v2', 'DFDC', 'CIPS-Lab',
-  '140K StyleGAN', 'StyleGAN2', 'StyleGAN3',
-  'FFHQ Real Faces', 'CelebA-HQ Real',
-  'StyleGAN1', 'SFHQ', 'StarGAN', 'Denoising Diffusion GAN',
-  'CIPS GAN', 'GANsformer', 'Diffusion-StyleGAN2', 'Projected GAN',
+  'FaceForensics++', 'Celeb-DF v2', 'DFDC', '140K Real Faces',
+  'StyleGAN', 'StyleGAN2', 'PGGAN', 'StarGAN', 'AttGAN',
+  'BEGAN', 'CramerGAN', 'MMDGAN', 'Artifact GAN',
 ]
 
 export default function Landing() {
@@ -74,7 +72,7 @@ export default function Landing() {
                 </span>
               </h1>
               <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 max-w-xl leading-relaxed">
-                Upload any video and our 3-model ensemble — trained on 343K+ balanced images from 17 curated types — will tell you if it's been manipulated.
+                Upload any video and our 3-model ensemble — trained on 288K+ balanced images from 17 curated types — will tell you if it's been manipulated.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/detect" className="btn-glow inline-flex items-center justify-center gap-2">
@@ -153,7 +151,7 @@ export default function Landing() {
             Trained on <span className="gradient-text">17 Curated Types</span>
           </motion.h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
-            343K+ balanced images covering deepfake videos, GAN generators, and diffusion models.
+            288K+ balanced images covering deepfake videos, GAN generators, and diffusion models.
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-3">

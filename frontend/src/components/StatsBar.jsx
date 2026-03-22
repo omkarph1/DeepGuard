@@ -45,7 +45,7 @@ function Counter({ end, suffix = '', prefix = '', duration = 2 }) {
 
 const stats = [
   { value: 96.01, suffix: '%', label: 'Accuracy', prefix: '' },
-  { value: 343000, suffix: '+', label: 'Training Images', prefix: '' },
+  { value: 288184, suffix: '+', label: 'Training Images', prefix: '' },
   { value: 3, suffix: '', label: 'AI Models', prefix: '' },
   { value: 17, suffix: '', label: 'Data Sources', prefix: '' },
 ]

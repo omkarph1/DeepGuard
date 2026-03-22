@@ -13,15 +13,11 @@ const fadeInUp = {
 }
 
 const datasetSources = [
-  { name: 'FF++ C23', count: 96695 },
-  { name: 'CelebDF v2', count: 72594 },
-  { name: 'FFHQ Real', count: 67178 },
-  { name: '140K StyleGAN', count: 32121 },
-  { name: 'CelebA-HQ', count: 28724 },
-  { name: 'StyleGAN2', count: 25852 },
-  { name: 'StyleGAN3', count: 10466 },
-  { name: 'CIPS-Lab', count: 1519 },
-  { name: 'Others (8)', count: 8289 },
+  { name: 'FF++ (Real/Fake)', count: 96695 },
+  { name: 'Celeb-DF v2', count: 72594 },
+  { name: 'DFDC (Real/Fake)', count: 67178 },
+  { name: '140K Real Faces', count: 32121 },
+  { name: 'Artifact GAN', count: 19596 },
 ]
 
 const barColors = ['#00D4E8', '#0891B2', '#7B61FF', '#6D5ACF', '#34D399', '#059669', '#F59E0B', '#EF4444', '#94A3B8']
@@ -62,8 +58,7 @@ export default function About() {
             DeepGuard <span className="gradient-text">v2</span>
           </h1>
           <p className="text-lg text-slate-800 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
-            DeepGuard v2 is an AI-powered deepfake detection system designed to combat the growing threat of synthetic media.
-            Using a 3-model ensemble trained on 343,000+ balanced images from 17 curated types.
+            Using a 3-model ensemble trained on 288,000+ balanced images from 17 curated manipulation types.
           </p>
         </motion.div>
       </section>
@@ -215,9 +210,9 @@ export default function About() {
           <div className="glass-card p-6 sm:p-8 relative overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
               {[
-                { step: '1', title: 'Data Aggregation (17 Types)', desc: 'Sourced hundreds of gigabytes of videos and images from 17 distinct, curated types including FaceForensics++, Celeb-DF, and leading StyleGAN generators to ensure robust geographic and demographic diversity.' },
-                { step: '2', title: 'MTCNN Face Extraction', desc: 'Used the MTCNN (Multi-task Cascaded Convolutional Network) architecture to accurately detect, crop, and align faces across all frames, perfectly standardized to remove arbitrary background noise.' },
-                { step: '3', title: 'Absolute 50/50 Balancing', desc: 'Strictly downsampled the dominant classes across all 17 types to achieve exactly a 50/50 split (171,719 REAL, 171,719 FAKE), preventing the model from ever developing a structural class bias.' }
+                { step: '1', title: 'Data Aggregation (17 Types)', desc: 'Sourced from 10+ public datasets across 17 distinct manipulation types including FaceForensics++, Celeb-DF v2, DFDC, and the Artifact GAN dataset (StyleGAN, StyleGAN2, StarGAN, etc.).' },
+                { step: '2', title: 'MTCNN & Deduplication', desc: 'Used MTCNN architecture for precision face extraction and alignment, followed by perceptual hashing to ensure every image in the 288K dataset is unique and verified.' },
+                { step: '3', title: 'Perfect 50/50 Balance', desc: 'Strictly balanced the final dataset with exactly 144,092 REAL and 144,092 FAKE images, split into verified Train, Validation, and Test sets for unbiased evaluation.' }
               ].map((s, i) => (
                 <div key={s.step} className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/30 transition-colors shadow-sm">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary font-black text-xl mb-4">
@@ -245,9 +240,9 @@ export default function About() {
           <div className="glass-card p-6 sm:p-8">
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               {[
-                { value: '343K+', label: 'Total Images', sub: 'Perfectly balanced Real/Fake' },
-                { value: '17', label: 'Data Types', sub: 'Videos, GANs & diffusion models' },
-                { value: '50/50', label: 'Class Balance', sub: '171,719 real + 171,719 fake' },
+                { value: '288K+', label: 'Total Images', sub: 'Verified & Deduplicated' },
+                { value: '17', label: 'Manipulation Types', sub: 'Swaps, Reenactment & GANs' },
+                { value: '50/50', label: 'Class Balance', sub: '144,092 Real + 144,092 Fake' },
               ].map((stat, i) => (
                 <div key={stat.label} className="text-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/30">
                   <p className="text-3xl font-bold gradient-text mb-1">{stat.value}</p>
@@ -280,6 +275,60 @@ export default function About() {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Manipulation Types */}
+      <section className="section-wrapper">
+        <motion.div {...fadeInUp}>
+          <div className="flex items-center gap-3 mb-8">
+            <FlaskConical className="w-6 h-6 text-primary-light dark:text-primary" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white">17 Manipulation Techniques</h2>
+          </div>
+          <div className="glass-card overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30">
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">#</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Manipulation Type</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Category</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  {[
+                    { id: 1, type: 'Face2Face', cat: 'Expression Transfer' },
+                    { id: 2, type: 'FaceSwap', cat: 'Identity Swap' },
+                    { id: 3, type: 'FaceShifter', cat: 'Identity Swap' },
+                    { id: 4, type: 'DeepFakes', cat: 'Identity Swap' },
+                    { id: 5, type: 'NeuralTextures', cat: 'Texture Synthesis' },
+                    { id: 6, type: 'Deepfake (DFDC)', cat: 'Identity Swap' },
+                    { id: 7, type: 'Face Reenactment (DFDC)', cat: 'Expression Transfer' },
+                    { id: 8, type: 'GAN-generated faces', cat: 'Full Synthesis' },
+                    { id: 9, type: 'StyleGAN', cat: 'Full Synthesis' },
+                    { id: 10, type: 'StyleGAN2', cat: 'Full Synthesis' },
+                    { id: 11, type: 'PGGAN', cat: 'Full Synthesis' },
+                    { id: 12, type: 'StarGAN', cat: 'Attribute Manipulation' },
+                    { id: 13, type: 'AttGAN', cat: 'Attribute Manipulation' },
+                    { id: 14, type: 'BEGAN', cat: 'Full Synthesis' },
+                    { id: 15, type: 'CramerGAN', cat: 'Full Synthesis' },
+                    { id: 16, type: 'MMDGAN', cat: 'Full Synthesis' },
+                    { id: 17, type: 'Celeb-DF swaps', cat: 'Identity Swap' },
+                  ].map((m) => (
+                    <tr key={m.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+                      <td className="px-6 py-4 text-sm font-mono text-slate-400">{m.id}</td>
+                      <td className="px-6 py-4 text-sm font-bold text-slate-800 dark:text-white">{m.type}</td>
+                      <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                        <span className="px-2 py-1 rounded-md bg-primary/5 dark:bg-primary/10 border border-primary/10 text-primary-light dark:text-primary text-xs font-medium">
+                          {m.cat}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </motion.div>

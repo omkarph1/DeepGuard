@@ -153,13 +153,20 @@ The React/Vite dashboard is deployed on Vercel.
 ---
 
 ## 📊 Dataset
+The models were trained on a perfectly balanced ensemble of **288,184 images** (144,092 Real, 144,092 Fake) sourced from **10+ public datasets** spanning **17 manipulation techniques**:
 
-The models were trained on a curated ensemble of **343,000+ images** sourced from 17 deepfake and real face datasets including:
-- **FaceForensics++** (FF++)
-- **Celeb-DF v2**
-- **DFDC (DeepFake Detection Challenge)**
-- **FaceShifter**, **Face2Face**, **NeuralTextures**
-- Custom scraped real-face data from public sources
+### 17 Manipulation Types
+1. **Face2Face** (Expression Transfer)
+2. **FaceSwap**, **FaceShifter**, **DeepFakes**, **Deepfake (DFDC)**, **Celeb-DF swaps** (Identity Swap)
+3. **NeuralTextures** (Texture Synthesis)
+4. **GAN-generated faces**, **StyleGAN**, **StyleGAN2**, **PGGAN**, **BEGAN**, **CramerGAN**, **MMDGAN** (Full Synthesis)
+5. **StarGAN**, **AttGAN** (Attribute Manipulation)
+
+### Data Sources
+- **Real:** FaceForensics++, Celeb-DF v2, DFDC, 140K Real Faces, Custom scraped data.
+- **Fake:** FF++ C23, Celeb-DF v2, DFDC, Artifact GAN dataset.
+
+**Preprocessing:** All images are **MTCNN-verified face crops**, deduplicated via perceptual hashing, and perfectly balanced 50/50.
 
 Training Hardware: **Kaggle T4×2 GPUs** | CUDA 11.8 | Mixed Precision FP16
 
