@@ -20,7 +20,7 @@ const ArrowDivider = () => (
       viewport={{ once: true, margin: "-50px" }}
       className="animate-bounce"
     >
-      <div className="w-14 h-14 rounded-full bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-900 flex items-center justify-center shadow-[0_0_20px_rgba(0,212,232,0.5)]">
+      <div className="w-14 h-14 rounded-full bg-surface-light dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-900 flex items-center justify-center shadow-[0_0_20px_rgba(0,212,232,0.5)]">
         <svg className="w-7 h-7 text-primary-light dark:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
@@ -304,7 +304,7 @@ export default function HowItWorks() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
-                  className="flex-1 text-center p-6 rounded-2xl bg-white/80 dark:bg-slate-800/80 border-2 border-slate-200 dark:border-slate-700 shadow-lg"
+                  className="flex-1 text-center p-6 rounded-2xl bg-surface-light/80 dark:bg-slate-800/80 border-2 border-slate-200 dark:border-slate-700 shadow-lg"
                 >
                   <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">{m.name}</p>
                   <p className={`text-2xl font-black ${m.color}`}>{m.vote}</p>
@@ -344,7 +344,7 @@ export default function HowItWorks() {
             </div>
 
             {/* Breakdown Card */}
-            <div className="p-6 rounded-2xl bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 col-span-1 lg:col-span-2">
+            <div className="p-6 rounded-2xl bg-surface-light/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 col-span-1 lg:col-span-2">
               <p className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-widest mb-6 border-b border-slate-200 dark:border-slate-700 pb-3">
                 Full Confidence Breakdown
               </p>
@@ -354,7 +354,7 @@ export default function HowItWorks() {
                   { name: 'XceptionNet', fake: '89.4%', real: '10.6%', focus: 'Frequency Domain', result: 'FAKE ❌', color: 'text-red-500' },
                   { name: 'ResNeXt-BiLSTM', fake: '14.1%', real: '85.9%', focus: 'Temporal Sequence', result: 'REAL ✅', color: 'text-emerald-500' }
                 ].map(model => (
-                  <div key={model.name} className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm gap-4">
+                  <div key={model.name} className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-surface-light dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm gap-4">
                     <div>
                       <p className="font-bold text-slate-800 dark:text-slate-200 text-sm">{model.name}</p>
                       <p className="text-xs text-slate-500 dark:text-slate-400">{model.focus}</p>
@@ -415,7 +415,7 @@ export default function HowItWorks() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15 }}
-                  className="text-center p-6 rounded-2xl bg-white/80 dark:bg-slate-800/80 border-2 border-slate-200 dark:border-slate-700 w-[180px] shadow-lg backdrop-blur-sm"
+                  className="text-center p-6 rounded-2xl bg-surface-light/80 dark:bg-slate-800/80 border-2 border-slate-200 dark:border-slate-700 w-[180px] shadow-lg backdrop-blur-sm"
                 >
                   <p className="text-4xl mb-3">{step.emoji}</p>
                   <p className="text-base font-black text-slate-800 dark:text-slate-100 tracking-wide uppercase">{step.label}</p>

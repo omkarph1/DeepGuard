@@ -214,7 +214,7 @@ export default function About() {
                 { step: '2', title: 'MTCNN & Deduplication', desc: 'Used MTCNN architecture for precision face extraction and alignment, followed by perceptual hashing to ensure every image in the 288K dataset is unique and verified.' },
                 { step: '3', title: 'Perfect 50/50 Balance', desc: 'Strictly balanced the final dataset with exactly 144,092 REAL and 144,092 FAKE images, split into verified Train, Validation, and Test sets for unbiased evaluation.' }
               ].map((s, i) => (
-                <div key={s.step} className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/30 transition-colors shadow-sm">
+                <div key={s.step} className="bg-surface-light dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/30 transition-colors shadow-sm">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary font-black text-xl mb-4">
                     {s.step}
                   </div>
@@ -244,7 +244,7 @@ export default function About() {
                 { value: '17', label: 'Manipulation Types', sub: 'Swaps, Reenactment & GANs' },
                 { value: '50/50', label: 'Class Balance', sub: '144,092 Real + 144,092 Fake' },
               ].map((stat, i) => (
-                <div key={stat.label} className="text-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/30">
+                <div key={stat.label} className="text-center p-4 rounded-xl bg-surface-light dark:bg-slate-800/30">
                   <p className="text-3xl font-bold gradient-text mb-1">{stat.value}</p>
                   <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{stat.label}</p>
                   <p className="text-xs text-slate-500 dark:text-slate-400">{stat.sub}</p>
@@ -291,7 +291,7 @@ export default function About() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30">
+                  <tr className="border-b border-slate-200 dark:border-slate-700 bg-surface-light/50 dark:bg-slate-800/30">
                     <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">#</th>
                     <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Manipulation Type</th>
                     <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Category</th>
@@ -317,7 +317,7 @@ export default function About() {
                     { id: 16, type: 'MMDGAN', cat: 'Full Synthesis' },
                     { id: 17, type: 'Celeb-DF swaps', cat: 'Identity Swap' },
                   ].map((m) => (
-                    <tr key={m.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+                    <tr key={m.id} className="hover:bg-surface-light dark:hover:bg-slate-800/20 transition-colors">
                       <td className="px-6 py-4 text-sm font-mono text-slate-400">{m.id}</td>
                       <td className="px-6 py-4 text-sm font-bold text-slate-800 dark:text-white">{m.type}</td>
                       <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">

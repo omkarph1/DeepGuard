@@ -30,7 +30,7 @@
     @apply bg-surface-dark/80 border-slate-700/50;
   }
   .glass-card {
-    @apply bg-white/80 border-slate-200;
+    @apply bg-surface-light/80 border-slate-200;
   }
 
   /* Glow button */

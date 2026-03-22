@@ -20,11 +20,11 @@ export default {
         },
         surface: {
           dark: '#111827',
-          light: '#FFFFFF',
+          light: '#F8FAFC',
         },
         bg: {
           dark: '#0A0E1A',
-          light: '#F1F5F9',
+          light: '#F0F4F8',
         },
       },
       fontFamily: {

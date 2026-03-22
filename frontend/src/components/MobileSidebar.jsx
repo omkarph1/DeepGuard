@@ -26,7 +26,7 @@ export default function MobileSidebar({ isOpen, onClose, darkMode, toggleDark, n
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed top-0 right-0 z-50 h-full w-72 shadow-2xl
-                       bg-white dark:bg-surface-dark border-l border-slate-200 dark:border-slate-700"
+                       bg-surface-light dark:bg-surface-dark border-l border-slate-200 dark:border-slate-700"
           >
             <div className="flex flex-col h-full">
               {/* Header */}
