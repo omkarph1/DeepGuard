@@ -16,7 +16,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-              AI-powered deepfake detection using a 3-model ensemble trained on 288K+ images from 17 curated types.
+              AI-powered deepfake detection using a 3-model ensemble trained on 288K+ images from 17 manipulation types.
             </p>
           </div>
 
@@ -65,7 +65,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/omkarph1/DeepGuard"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-primary-light dark:hover:text-primary transition-colors"
