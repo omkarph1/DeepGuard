@@ -1,11 +1,12 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Landing from './pages/Landing'
-import Detect from './pages/Detect'
-import HowItWorks from './pages/HowItWorks'
-import About from './pages/About'
+
+const Landing = lazy(() => import('./pages/Landing'))
+const Detect = lazy(() => import('./pages/Detect'))
+const HowItWorks = lazy(() => import('./pages/HowItWorks'))
+const About = lazy(() => import('./pages/About'))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -37,12 +38,20 @@ function App() {
       <ScrollToTop />
       <Navbar darkMode={darkMode} toggleDark={toggleDark} />
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/detect" element={<Detect />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <Suspense
+          fallback={
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-slate-600 dark:text-slate-300">
+              Loading page...
+            </div>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/detect" element={<Detect />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>

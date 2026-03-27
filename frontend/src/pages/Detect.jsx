@@ -1,11 +1,12 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { Shield } from 'lucide-react'
 import UploadZone from '../components/UploadZone'
 import ProgressTerminal from '../components/ProgressTerminal'
 import ProgressBar from '../components/ProgressBar'
-import ResultsPanel from '../components/ResultsPanel'
 import { dummyResults } from '../data/dummyResults'
+
+const ResultsPanel = lazy(() => import('../components/ResultsPanel'))
 
 const DEMO_MODE = false // Set to false when backend is connected
 const API_URL = import.meta.env.VITE_API_URL || 'https://omkarpp-deepguard-backend.hf.space';
@@ -235,7 +236,15 @@ export default function Detect() {
 
         {/* Results Panel */}
         {results && (
-          <ResultsPanel results={results} onReset={handleReset} />
+          <Suspense
+            fallback={
+              <div className="glass-card p-6 text-center text-slate-600 dark:text-slate-300">
+                Loading analysis results...
+              </div>
+            }
+          >
+            <ResultsPanel results={results} onReset={handleReset} />
+          </Suspense>
         )}
       </div>
     </div>
