@@ -153,9 +153,9 @@ The React/Vite dashboard is deployed on Vercel.
 ---
 
 ## 📊 Dataset
-The models were trained on a perfectly balanced ensemble of **288,184 images** (144,092 Real, 144,092 Fake) sourced from **10+ public datasets** spanning **17 manipulation techniques**:
+The models were trained on a perfectly balanced ensemble of **288,184 images** (144,092 Real, 144,092 Fake) sourced from **5+ public datasets** spanning **10+ manipulation techniques**:
 
-### 17 Manipulation Types
+### 10+ Manipulation Types
 1. **Face2Face** (Expression Transfer)
 2. **FaceSwap**, **FaceShifter**, **DeepFakes**, **Deepfake (DFDC)**, **Celeb-DF swaps** (Identity Swap)
 3. **NeuralTextures** (Texture Synthesis)

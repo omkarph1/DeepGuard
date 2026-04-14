@@ -46,8 +46,8 @@ function Counter({ end, suffix = '', prefix = '', duration = 2 }) {
 const stats = [
   { value: 96.01, suffix: '%', label: 'Accuracy', prefix: '' },
   { value: 288184, suffix: '+', label: 'Training Images', prefix: '' },
-  { value: 17, suffix: '', label: 'Manipulation Types', prefix: '' },
-  { value: 10, suffix: '+', label: 'Data Sources', prefix: '' },
+  { value: 10, suffix: '+', label: 'Manipulation Types', prefix: '' },
+  { value: 5, suffix: '+', label: 'Data Sources', prefix: '' },
 ]
 
 export default function StatsBar() {

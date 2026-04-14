@@ -58,7 +58,7 @@ export default function About() {
             DeepGuard <span className="gradient-text">v2</span>
           </h1>
           <p className="text-lg text-slate-800 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
-            Using a 3-model ensemble trained on 288,000+ balanced images from 17 manipulation types.
+            Using a 3-model ensemble trained on 288,000+ balanced images from 10+ manipulation types.
           </p>
         </motion.div>
       </section>
@@ -210,7 +210,7 @@ export default function About() {
           <div className="glass-card p-6 sm:p-8 relative overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
               {[
-                { step: '1', title: 'Data Aggregation (17 Types)', desc: 'Sourced from 10+ public datasets across 17 distinct manipulation types including FaceForensics++, Celeb-DF v2, DFDC, and the Artifact GAN dataset (StyleGAN, StyleGAN2, StarGAN, etc.).' },
+                { step: '1', title: 'Data Aggregation (10+ Types)', desc: 'Sourced from 5+ public datasets across 10+ distinct manipulation types including FaceForensics++, Celeb-DF v2, DFDC, and the Artifact GAN dataset (StyleGAN, StyleGAN2, StarGAN, etc.).' },
                 { step: '2', title: 'MTCNN & Deduplication', desc: 'Used MTCNN architecture for precision face extraction and alignment, followed by perceptual hashing to ensure every image in the 288K dataset is unique and verified.' },
                 { step: '3', title: 'Perfect 50/50 Balance', desc: 'Strictly balanced the final dataset with exactly 144,092 REAL and 144,092 FAKE images, split into verified Train, Validation, and Test sets for unbiased evaluation.' }
               ].map((s, i) => (
@@ -241,7 +241,7 @@ export default function About() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               {[
                 { value: '288K+', label: 'Total Images', sub: 'Verified & Deduplicated' },
-                { value: '17', label: 'Manipulation Types', sub: 'Swaps, Reenactment & GANs' },
+                { value: '10+', label: 'Manipulation Types', sub: 'Swaps, Reenactment & GANs' },
                 { value: '50/50', label: 'Class Balance', sub: '144,092 Real + 144,092 Fake' },
               ].map((stat, i) => (
                 <div key={stat.label} className="text-center p-4 rounded-xl bg-surface-light dark:bg-slate-800/30">
@@ -285,7 +285,7 @@ export default function About() {
         <motion.div {...fadeInUp}>
           <div className="flex items-center gap-3 mb-8">
             <FlaskConical className="w-6 h-6 text-primary-light dark:text-primary" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white">17 Manipulation Techniques</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white">10+ Manipulation Techniques</h2>
           </div>
           <div className="glass-card overflow-hidden">
             <div className="overflow-x-auto">

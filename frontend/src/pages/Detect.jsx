@@ -174,7 +174,7 @@ export default function Detect() {
             Analyze Your <span className="gradient-text">Video</span>
           </h1>
           <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
-            Upload a video and our 3-model ensemble — trained on 343K+ images from 17 curated types — will determine if it contains deepfake manipulation.
+            Upload a video and our 3-model ensemble — trained on 343K+ images from 10+ curated types — will determine if it contains deepfake manipulation.
           </p>
         </motion.div>
 
